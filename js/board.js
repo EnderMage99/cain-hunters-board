@@ -389,14 +389,17 @@
   });
 
   /* ---------- zoom ---------- */
-  let fitted = false;
+  // The board hangs in a room scene (SW x SH world px); zooming out far enough shows the whole room.
+  const scene = $('#scene'), SW = scene.offsetWidth, SH = scene.offsetHeight;
+  const roomZoom = () => Math.min((viewport.clientWidth - 32) / SW, (viewport.clientHeight - 32) / SH);
+  let fitted = null;
   function setZoom(nz, keep = true) {
-    fitted = false;
-    nz = clamp(nz, .15, 2);
+    fitted = null;
+    nz = clamp(nz, roomZoom(), 2);
     const p = keep ? centerPoint() : null;
     z = nz;
-    stage.style.width = TW * z + 'px'; stage.style.height = TH * z + 'px';
-    board.style.transform = `scale(${z})`;
+    stage.style.width = SW * z + 'px'; stage.style.height = SH * z + 'px';
+    scene.style.transform = `scale(${z})`;
     document.documentElement.style.setProperty('--iz', String(1 / z));
     $('#zoomFit').textContent = Math.round(z * 100) + '%';
     if (p) {
@@ -404,11 +407,19 @@
       viewport.scrollLeft += r.left + p.x * z - (v.left + v.width / 2);
       viewport.scrollTop += r.top + p.y * z - (v.top + v.height / 2);
     }
+    window.dispatchEvent(new CustomEvent('scenezoom', { detail: z }));
   }
-  const fit = () => { setZoom(Math.min((viewport.clientWidth - 32) / TW, (viewport.clientHeight - 32) / TH), false); fitted = true; };
+  function centerOn(el) {
+    const r = el.getBoundingClientRect(), v = viewport.getBoundingClientRect();
+    viewport.scrollLeft += r.left + r.width / 2 - (v.left + v.width / 2);
+    viewport.scrollTop += r.top + r.height / 2 - (v.top + v.height / 2);
+  }
+  const fit = () => { setZoom(Math.min((viewport.clientWidth - 32) / TW, (viewport.clientHeight - 32) / TH), false); centerOn(board); fitted = 'board'; };
+  const fitRoom = () => { setZoom(roomZoom(), false); centerOn(scene); fitted = 'room'; };
   $('#zoomIn').onclick = () => setZoom(z * 1.2);
   $('#zoomOut').onclick = () => setZoom(z / 1.2);
   $('#zoomFit').onclick = fit;
+  $('#zoomRoom').onclick = fitRoom;
   viewport.addEventListener('wheel', e => {
     if (!e.ctrlKey && !e.metaKey) return;
     e.preventDefault(); setZoom(z * (e.deltaY < 0 ? 1.1 : 1 / 1.1));
@@ -699,5 +710,5 @@
   if (saved) { state = saved; renderAll(); } else loadExample();
   fit();
   document.fonts && document.fonts.ready.then(renderStrings);
-  window.addEventListener('resize', () => { if (fitted) fit(); });
+  window.addEventListener('resize', () => { if (fitted === 'room') fitRoom(); else if (fitted) fit(); });
 })();

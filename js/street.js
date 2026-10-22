@@ -405,25 +405,20 @@
     x.fillStyle = 'rgba(28,34,52,.16)'; x.fillRect(0, 0, vw, H);
   }
 
-  /* ---------- placing the windows beside the board ---------- */
-  function layout() {
-    const v = viewport.getBoundingClientRect(), ih = innerHeight;
-    const fs = Math.min((v.width - 32) / 2480, (v.height - 32) / 1680);
-    const gutter = (v.width - 2480 * fs) / 2;
-    const top0 = v.top + v.height * .07, bottom = ih * (1 - .09 - .25) - ih * .025;
-    let w = Math.min(gutter * .6, 280), h = bottom - top0;
-    if (h > w * 2.3) h = w * 2.3;
-    const on = w >= 90 && h >= 160;
+  /* ---------- sizing the windows to the zoom, drawing only the ones on screen ---------- */
+  let zoom = 1;
+  function resize() {
     const dpr = Math.min(2, devicePixelRatio || 1);
-    wins.forEach((win, i) => {
-      win.classList.toggle('on', on);
-      if (!on) return;
-      const left = i === 0 ? v.left + (gutter - w) / 2 : v.right - gutter + (gutter - w) / 2;
-      Object.assign(win.style, { left: left + 'px', top: (bottom - h) + 'px', width: w + 'px', height: h + 'px' });
-      const op = win.querySelector('.opening'), c = win.querySelector('canvas');
-      c.width = Math.round(op.clientWidth * dpr); c.height = Math.round(op.clientHeight * dpr);
-    });
-    return on;
+    for (const v of views) {
+      const op = v.canvas.parentElement;
+      const k = Math.min(zoom * dpr, 1400 / op.clientHeight);
+      v.canvas.width = Math.max(1, Math.round(op.clientWidth * k));
+      v.canvas.height = Math.max(1, Math.round(op.clientHeight * k));
+    }
+  }
+  function onScreen(el) {
+    const r = el.getBoundingClientRect(), s = viewport.getBoundingClientRect();
+    return r.right > s.left && r.left < s.right && r.bottom > s.top && r.top < s.bottom;
   }
 
   const views = wins.map((el, i) => ({ el, canvas: el.querySelector('canvas'), viewX: i ? 1010 : 130 }));
@@ -435,15 +430,18 @@
     if (now - last < 33) return;
     last = now;
     const t = now / 1000 - t0;
-    for (const v of views) drawView(v, t);
+    for (const v of views) if (onScreen(v.el)) drawView(v, t);
   }
   function refresh() {
-    const on = layout();
+    resize();
     if (!bg) return;
-    if (reduce || !on) { running = false; if (on) for (const v of views) drawView(v, 300); return; }
+    if (reduce) { for (const v of views) drawView(v, 300); return; }
     if (!running) { running = true; requestAnimationFrame(frame); }
   }
-  addEventListener('resize', refresh);
+  addEventListener('scenezoom', e => { zoom = e.detail; refresh(); });
+  if (reduce) viewport.addEventListener('scroll', () => { if (bg) for (const v of views) drawView(v, 300); }, { passive: true });
+  const scene = document.getElementById('scene');
+  if (scene) zoom = scene.getBoundingClientRect().width / scene.offsetWidth || 1; // board.js zoomed before this script loaded
   refresh();
   Promise.all([load('img/room/brick.jpg'), load('img/room/cobbles.jpg'),
     document.fonts ? document.fonts.load('600 12px "IM Fell English SC"').catch(() => null) : null])

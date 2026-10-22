@@ -13,13 +13,6 @@
 <link rel="stylesheet" href="css/board.css">
 </head>
 <body>
-<div id="room" aria-hidden="true">
-  <div class="wall"></div><div class="wall-light"></div>
-  <div class="dado"></div>
-  <div class="floor"></div>
-    <div class="win"><div class="frame"><div class="opening"><canvas></canvas><div class="glass"></div><div class="sash"></div></div></div><div class="sill"></div><div class="curtain l"></div><div class="curtain r"></div><div class="pelmet"></div></div>
-    <div class="win"><div class="frame"><div class="opening"><canvas></canvas><div class="glass"></div><div class="sash"></div></div></div><div class="sill"></div><div class="curtain l"></div><div class="curtain r"></div><div class="pelmet"></div></div>
-</div>
 <header class="bar">
   <div class="bar-in">
     <div class="brand"><b>Sin Hunter's Board</b><small>Case notes &middot; Anno 1889</small></div>
@@ -39,8 +32,9 @@
     <div class="grp" aria-label="View">
       <span class="grp-label">View</span>
       <button class="btn sq" id="zoomOut" type="button" aria-label="Zoom out">&minus;</button>
-      <button class="btn" id="zoomFit" type="button" title="Fit board to screen">100%</button>
+      <button class="btn" id="zoomFit" type="button" title="Fit the board to the screen">100%</button>
       <button class="btn sq" id="zoomIn" type="button" aria-label="Zoom in">+</button>
+      <button class="btn" id="zoomRoom" type="button" title="Zoom out to the whole room">Room</button>
     </div>
     <div class="grp" aria-label="Case file">
       <span class="grp-label">Case file</span>
@@ -56,6 +50,42 @@
 
 <main id="viewport">
   <div id="stage">
+   <div id="scene">
+    <div id="room" aria-hidden="true">
+    <div class="wall"></div>
+    <div class="cornice"></div><div class="rail"></div>
+    <div class="dado"></div>
+    <div class="floor"></div>
+    <div class="win" id="winL" style="left:1650px;top:420px;width:1000px;height:2050px"><div class="frame"><div class="opening"><canvas></canvas><div class="glass"></div><div class="sash"></div></div></div><div class="sill"></div><div class="curtain l"></div><div class="curtain r"></div><div class="pelmet"></div></div>
+    <div class="win" id="winR" style="left:6650px;top:420px;width:1000px;height:2050px"><div class="frame"><div class="opening"><canvas></canvas><div class="glass"></div><div class="sash"></div></div></div><div class="sill"></div><div class="curtain l"></div><div class="curtain r"></div><div class="pelmet"></div></div>
+    <div class="hook" style="left:3750px"></div><div class="hook" style="left:5750px"></div>
+    <div class="cord" style="left:3750px"></div><div class="cord" style="left:5750px"></div>
+    <div class="pool" style="left:537px;top:3430px;width:659px"></div>
+    <img class="prop" src="img/decor/vintage_grandfather_clock_01.png" alt="" style="left:500px;top:1239px;width:732px;height:2201px">
+    <div class="pool" style="left:3012px;top:3430px;width:392px"></div>
+    <img class="prop" src="img/decor/side_table_tall_01.png" alt="" style="left:2990px;top:2441px;width:435px;height:999px">
+    <img class="prop" src="img/decor/marble_bust_01.png" alt="" style="left:3033px;top:1835px;width:348px;height:650px">
+    <div class="pool" style="left:7832px;top:3430px;width:1480px"></div>
+    <img class="prop" src="img/decor/vintage_cabinet_01.png" alt="" style="left:7750px;top:1540px;width:1644px;height:1900px">
+    <img class="prop" src="img/decor/vintage_oil_lamp.png" alt="" style="left:7950px;top:1992px;width:187px;height:698px">
+    <img class="prop" src="img/decor/book_encyclopedia_set_01.png" alt="" style="left:8150px;top:2345px;width:620px;height:345px">
+    <img class="prop" src="img/decor/mantel_clock_01.png" alt="" style="left:8800px;top:2385px;width:520px;height:305px">
+    <div class="pool" style="left:6073px;top:3460px;width:410px"></div>
+    <img class="prop" src="img/decor/potted_plant_01.png" alt="" style="left:6050px;top:2369px;width:455px;height:1101px">
+    <div class="pool" style="left:3850px;top:3470px;width:1800px"></div>
+    <img class="prop" src="img/decor/sofa_03.png" alt="" style="left:3750px;top:2440px;width:2000px;height:1040px">
+    <div class="pool" style="left:5105px;top:3820px;width:990px"></div>
+    <img class="prop" src="img/decor/round_wooden_table_01.png" alt="" style="left:5050px;top:2828px;width:1100px;height:1002px">
+    <img class="prop" src="img/decor/tea_set_01.png" alt="" style="left:5250px;top:2658px;width:700px;height:290px">
+    <div class="pool" style="left:1900px;top:3840px;width:900px"></div>
+    <img class="prop" src="img/decor/treasure_chest.png" alt="" style="left:1850px;top:3088px;width:1000px;height:762px">
+    <img class="prop" src="img/decor/brass_candleholders.png" alt="" style="left:2120px;top:2800px;width:500px;height:450px">
+    <div class="pool" style="left:6536px;top:3860px;width:651px"></div>
+    <img class="prop" src="img/decor/chinese_armchair.png" alt="" style="left:6500px;top:2620px;width:723px;height:1250px">
+    <div class="pool" style="left:8495px;top:3870px;width:810px"></div>
+    <img class="prop" src="img/decor/vintage_suitcase.png" alt="" style="left:8450px;top:3403px;width:900px;height:477px">
+    <div class="light"></div>
+    </div>
     <div id="board">
       <div class="fr-shadow"></div>
       <div class="fr t"></div><div class="fr b"></div><div class="fr l"></div><div class="fr r"></div>
@@ -65,6 +95,7 @@
         <div id="strctl" hidden></div>
       </div>
     </div>
+   </div>
   </div>
 </main>
 

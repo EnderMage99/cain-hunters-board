@@ -19,7 +19,8 @@ it or hand it to your players.
 - **String:** press **Tie string** (or pick a colour), then click two items.
   Click a string to recolour or cut it.
 - **View:** the − / + buttons or Ctrl + scroll zoom; the percentage fits the
-  board to the screen. Drag empty cork to pan.
+  board to the screen and **Room** zooms out to the whole room. Drag empty
+  space to pan.
 - **Case file:** **Export PNG** saves a picture of the whole board, with the
   board itself tucked inside the file, so **Open file** on that PNG brings
   the working board back. **Save file** saves the same thing as `.json`.
@@ -28,11 +29,12 @@ it or hand it to your players.
 
 The page opens on an example case. **Clear board** starts your own.
 
-Behind the board is a Victorian room with two sash windows looking across a
-London street at dusk: people, cabs, an omnibus and a brewer's dray pass by
-gas-lit shopfronts. The street loops without cuts, and holds still if your
-system asks for reduced motion. The windows appear when there is room beside
-the board (roughly 1600px wide screens and up).
+The board hangs from a picture rail in a Victorian room, drawn to scale: a
+grandfather clock, a bust on a pedestal, a sofa and tea table, a china
+cabinet, and two sash windows looking across a London street at dusk, where
+people, cabs, an omnibus and a brewer's dray pass gas-lit shopfronts. The
+street loops without cuts, and holds still if your system asks for reduced
+motion.
 
 ## Files
 
@@ -42,6 +44,7 @@ the board (roughly 1600px wide screens and up).
 - `js/street.js` - the animated street outside the windows
 - `img/cork.jpg` - the cork texture
 - `img/room/` - room and street textures
+- `img/decor/` - furniture and objects in the room
 
 Plain HTML, CSS and JavaScript with no build step. Opened straight from disk
 everything works except Export PNG, which browsers block for `file://`
@@ -54,3 +57,8 @@ http.server`).
   [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Morris_St_James_1880.jpg)
 - Wood, floorboards, brick and cobblestone textures: [Poly Haven](https://polyhaven.com)
   (CC0): Dark Wood, Wood Floor Worn, Dark Brick Wall, Cobblestone 02
+- Furniture and objects: renders of [Poly Haven](https://polyhaven.com/models) models (CC0):
+  Vintage Grandfather Clock 01, Side Table Tall 01, Marble Bust 01, Vintage
+  Cabinet 01, Vintage Oil Lamp, Book Encyclopedia Set 01, Mantel Clock 01,
+  Potted Plant 01, Sofa 03, Round Wooden Table 01, Tea Set 01, Treasure Chest,
+  Brass Candleholders, Chinese Armchair, Vintage Suitcase
