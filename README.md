@@ -4,7 +4,7 @@ An 1889 cork evidence board for a CAIN one-shot: pin up notes, telegrams and
 old photographs about the sin you're hunting, and tie them together with
 coloured string.
 
-**Live site:** https://endermage99.github.io/sin-hunters-board/
+**Live site:** https://endermage99.github.io/cain-hunters-board/
 
 ## Using it
 
