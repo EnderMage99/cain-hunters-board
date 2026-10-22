@@ -63,11 +63,11 @@ button{font:inherit}
 .txt{white-space:pre-wrap;overflow-wrap:break-word;outline:none;min-height:1em}
 .txt.editing{cursor:text;user-select:text;-webkit-user-select:text;background:rgba(255,255,255,.28);box-shadow:0 0 0 4px rgba(255,255,255,.28)}
 .txt:empty::before{content:attr(data-ph);opacity:.42}
-.note{background:radial-gradient(circle at 82% 86%,rgba(140,90,30,.2),transparent 38%),radial-gradient(circle at 14% 18%,rgba(255,250,230,.5),transparent 50%),#e8d4a7;padding:24px 20px 20px;min-height:110px}
+.note{background:radial-gradient(circle at 82% 86%,rgba(140,90,30,.2),transparent 38%),radial-gradient(circle at 14% 18%,rgba(255,250,230,.5),transparent 50%),#e8d4a7;padding:24px 20px 20px}
 .note .txt{font:600 31px/34px var(--f-hand);color:var(--ink)}
-.card{background:linear-gradient(rgba(190,60,50,.65),rgba(190,60,50,.65)) 0 41px/100% 1.5px no-repeat,linear-gradient(#f2e8d0,#f2e8d0) 0 0/100% 33px no-repeat,repeating-linear-gradient(180deg,transparent 0 29px,rgba(90,130,180,.42) 29px 30px) 0 12px/100% 30px repeat-y,#f2e8d0;padding:16px 16px 18px;min-height:140px}
+.card{background:linear-gradient(rgba(190,60,50,.65),rgba(190,60,50,.65)) 0 41px/100% 1.5px no-repeat,linear-gradient(#f2e8d0,#f2e8d0) 0 0/100% 33px no-repeat,repeating-linear-gradient(180deg,transparent 0 29px,rgba(90,130,180,.42) 29px 30px) 0 12px/100% 30px repeat-y,#f2e8d0;padding:16px 16px 18px}
 .card .txt{font:20px/30px var(--f-type);color:#16120e}
-.tg{background:radial-gradient(circle at 90% 10%,rgba(150,110,40,.18),transparent 40%),#e6d29a;padding:14px 18px 18px;min-height:120px}
+.tg{background:radial-gradient(circle at 90% 10%,rgba(150,110,40,.18),transparent 40%),#e6d29a;padding:14px 18px 18px}
 .tg-head{font:29px/32px var(--f-sc);letter-spacing:.2em;text-align:center;color:#3b2a1a}
 .tg-sub{font:italic 12px/16px var(--f-print);text-align:center;color:#5b4630;border-bottom:1px solid rgba(60,40,20,.55);padding-bottom:6px;margin:3px 0 10px}
 .tg .txt{font:20px/28px var(--f-type);text-transform:uppercase;color:#16120e}
