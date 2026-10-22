@@ -57,7 +57,7 @@ http.server`).
   [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Morris_St_James_1880.jpg)
 - Wood, floorboards, brick and cobblestone textures: [Poly Haven](https://polyhaven.com)
   (CC0): Dark Wood, Wood Floor Worn, Dark Brick Wall, Cobblestone 02
-- Furniture and objects: renders of [Poly Haven](https://polyhaven.com/models) models (CC0):
+- Furniture and objects: front-view renders of [Poly Haven](https://polyhaven.com/models) models (CC0):
   Vintage Grandfather Clock 01, Side Table Tall 01, Marble Bust 01, Vintage
   Cabinet 01, Vintage Oil Lamp, Book Encyclopedia Set 01, Mantel Clock 01,
   Potted Plant 01, Sofa 03, Round Wooden Table 01, Tea Set 01, Treasure Chest,
