@@ -3,11 +3,11 @@
   --desk:#1a1310; --desk-2:#2b2019; --rule:#3d2e23;
   --brass:#caa35c; --brass-2:#e8cb8f; --brass-lo:#7d6235;
   --ui:#ecdcb9; --ui-dim:#ad9a77;
-  --ink:#2b1e14; --danger:#7a2119;
+  --ink:#1d140d; --danger:#7a2119;
   --f-print:"IM Fell English",Georgia,"Times New Roman",serif;
   --f-sc:"IM Fell English SC","IM Fell English",Georgia,serif;
   --f-type:"Special Elite","Courier New",Courier,monospace;
-  --f-hand:"La Belle Aurore","Segoe Script","Bradley Hand",cursive;
+  --f-hand:"Caveat","Segoe Print","Bradley Hand",cursive;
   --iz:1;
   color-scheme:dark;
 }
@@ -63,19 +63,19 @@ button{font:inherit}
 .txt.editing{cursor:text;user-select:text;-webkit-user-select:text;background:rgba(255,255,255,.28);box-shadow:0 0 0 4px rgba(255,255,255,.28)}
 .txt:empty::before{content:attr(data-ph);opacity:.42}
 .note{background:radial-gradient(circle at 82% 86%,rgba(140,90,30,.2),transparent 38%),radial-gradient(circle at 14% 18%,rgba(255,250,230,.5),transparent 50%),#e8d4a7;padding:24px 20px 20px;min-height:110px}
-.note .txt{font:23px/30px var(--f-hand);color:var(--ink)}
-.card{background:linear-gradient(rgba(190,60,50,.65),rgba(190,60,50,.65)) 0 38px/100% 1.5px no-repeat,linear-gradient(#f2e8d0,#f2e8d0) 0 0/100% 30px no-repeat,repeating-linear-gradient(180deg,transparent 0 25px,rgba(90,130,180,.42) 25px 26px) 0 13px/100% 26px repeat-y,#f2e8d0;padding:16px 16px 18px;min-height:140px}
-.card .txt{font:16px/26px var(--f-type);color:#29241f}
+.note .txt{font:600 31px/34px var(--f-hand);color:var(--ink)}
+.card{background:linear-gradient(rgba(190,60,50,.65),rgba(190,60,50,.65)) 0 41px/100% 1.5px no-repeat,linear-gradient(#f2e8d0,#f2e8d0) 0 0/100% 33px no-repeat,repeating-linear-gradient(180deg,transparent 0 29px,rgba(90,130,180,.42) 29px 30px) 0 12px/100% 30px repeat-y,#f2e8d0;padding:16px 16px 18px;min-height:140px}
+.card .txt{font:20px/30px var(--f-type);color:#16120e}
 .tg{background:radial-gradient(circle at 90% 10%,rgba(150,110,40,.18),transparent 40%),#e6d29a;padding:14px 18px 18px;min-height:120px}
 .tg-head{font:29px/32px var(--f-sc);letter-spacing:.2em;text-align:center;color:#3b2a1a}
 .tg-sub{font:italic 12px/16px var(--f-print);text-align:center;color:#5b4630;border-bottom:1px solid rgba(60,40,20,.55);padding-bottom:6px;margin:3px 0 10px}
-.tg .txt{font:15px/22px var(--f-type);text-transform:uppercase;color:#1f1a14}
+.tg .txt{font:20px/28px var(--f-type);text-transform:uppercase;color:#16120e}
 .label{background:#f0e4c4;padding:12px 18px 12px}
-.label .txt{font:30px/36px var(--f-print);text-align:center;color:#2a1a10}
+.label .txt{font:40px/46px var(--f-print);text-align:center;color:#1f130b}
 .photo{background:linear-gradient(#ebdbb9,#dbc69c);padding:12px 12px 10px;border-radius:3px}
 .photo img{display:block;width:100%;height:auto;pointer-events:none;box-shadow:0 0 0 1px rgba(80,55,30,.6)}
 .imprint{font:10px/14px var(--f-sc);letter-spacing:.18em;text-align:center;color:#8a6a3a;margin-top:7px;white-space:nowrap;overflow:hidden}
-.photo .txt{font:19px/25px var(--f-hand);text-align:center;color:var(--ink);margin-top:4px}
+.photo .txt{font:600 26px/30px var(--f-hand);text-align:center;color:var(--ink);margin-top:4px}
 .ctl{position:absolute;left:50%;top:100%;transform:translate(-50%,14px) scale(var(--iz));transform-origin:50% 0;display:none;gap:4px;white-space:nowrap;z-index:3}
 .item.sel .ctl{display:flex}
 .ctl button,#strctl button{font-size:13px;color:var(--ui);background:#2b2019;border:1px solid var(--brass-lo);border-radius:3px;padding:4px 9px;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.4)}

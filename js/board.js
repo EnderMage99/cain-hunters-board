@@ -9,11 +9,11 @@
   const PINS = [['#e2646a', '#b3232c', '#5e0f14'], ['#f3dc9e', '#c8a25a', '#6d5226'], ['#6a625a', '#25201c', '#080606'], ['#ffffff', '#e4ddcc', '#9a9080']];
   const IMPRINTS = ['J. Ashford & Sons · Photographers', 'Marlowe Studio · Cabinet Portraits', 'H. Vane · Photographic Artist', 'Pell & Garrick · Est. 1871', 'The Lantern Studio · Instantaneous Process'];
   const TYPES = {
-    note: { w: 240, ph: 'Write a note…' },
-    card: { w: 290, ph: 'Witness, place, date…' },
-    tg: { w: 310, ph: 'Type the message stop' },
-    label: { w: 360, ph: 'Name the sin' },
-    photo: { w: 260, ph: 'Add a caption' }
+    note: { w: 290, ph: 'Write a note…' },
+    card: { w: 340, ph: 'Witness, place, date…' },
+    tg: { w: 360, ph: 'Type the message stop' },
+    label: { w: 420, ph: 'Name the sin' },
+    photo: { w: 280, ph: 'Add a caption' }
   };
 
   const $ = s => document.querySelector(s);
@@ -572,8 +572,8 @@
     if (it.type === 'photo') { const g = x.createLinearGradient(0, 0, 0, h); g.addColorStop(0, '#ebdbb9'); g.addColorStop(1, '#dbc69c'); x.fillStyle = g; x.fillRect(0, 0, w, h); }
     if (it.type === 'card') {
       x.fillStyle = 'rgba(90,130,180,.42)';
-      for (let y = 64; y < h; y += 26) x.fillRect(0, y - 1, w, 1);
-      x.fillStyle = 'rgba(190,60,50,.65)'; x.fillRect(0, 38, w, 1.5);
+      for (let y = 71; y < h; y += 30) x.fillRect(0, y - 1, w, 1);
+      x.fillStyle = 'rgba(190,60,50,.65)'; x.fillRect(0, 41, w, 1.5);
     }
     x.restore();
     if (it.type === 'tg') {
@@ -610,7 +610,7 @@
   }
   async function renderPng() {
     if (editing) editing.blur();
-    await Promise.all(['23px "La Belle Aurore"', '16px "Special Elite"', '30px "IM Fell English"', 'italic 12px "IM Fell English"', '29px "IM Fell English SC"']
+    await Promise.all(['600 31px "Caveat"', '20px "Special Elite"', '40px "IM Fell English"', 'italic 12px "IM Fell English"', '29px "IM Fell English SC"']
       .map(f => document.fonts.load(f).catch(() => null)));
     await loadCork();
     const c = document.createElement('canvas'); c.width = TW; c.height = TH;
@@ -680,12 +680,12 @@
   function loadExample() {
     state = { items: [], strings: [] };
     const A = (type, x, y, w, text, rot, extra = {}) => addItem(type, Object.assign({ at: { x, y }, exact: true, w, text, rot, quiet: true }, extra));
-    const label = A('label', 990, 110, 440, 'The Weeping Saint\nWhitby · October 1889', -1.2, { pin: 1 });
-    const n1 = A('note', 1010, 420, 270, "Three bell-ringers gone from St. Mary's. All last seen after evensong. Each left his boots on the 199 steps.", 2.1, { pin: 0 });
-    const card = A('card', 1530, 820, 310, 'WITNESS: Mrs. Ada Pryce\nHeard singing from the crypt at two in the morning. Swears it was her late husband.', -2.4, { pin: 1 });
-    const tg = A('tg', 520, 640, 330, 'Arrived Whitby stop churchwarden lying stop ask him about the fire of 1871 stop — H.', 1.6, { pin: 3 });
-    const n2 = A('note', 1060, 1040, 260, 'Is the sin feeding on grief?\nCheck parish burials since May.', -1.8, { pin: 0 });
-    A('note', 110, 1340, 330, 'Example case. Press Clear board to start your own.', -2.5, { pin: 1 });
+    const label = A('label', 950, 110, 520, 'The Weeping Saint\nWhitby · October 1889', -1.2, { pin: 1 });
+    const n1 = A('note', 1000, 420, 330, "Three bell-ringers gone from St. Mary's. All last seen after evensong. Each left his boots on the 199 steps.", 2.1, { pin: 0 });
+    const card = A('card', 1530, 820, 370, 'WITNESS: Mrs. Ada Pryce\nHeard singing from the crypt at two in the morning. Swears it was her late husband.', -2.4, { pin: 1 });
+    const tg = A('tg', 480, 640, 390, 'Arrived Whitby stop churchwarden lying stop ask him about the fire of 1871 stop — H.', 1.6, { pin: 3 });
+    const n2 = A('note', 1040, 1060, 320, 'Is the sin feeding on grief?\nCheck parish burials since May.', -1.8, { pin: 0 });
+    A('note', 110, 1320, 380, 'Example case. Press Clear board to start your own.', -2.5, { pin: 1 });
     const S = (a, b, c) => state.strings.push({ id: uid(), a: a.id, b: b.id, color: c });
     S(label, n1, '#b3232c'); S(n1, card, '#27427c'); S(tg, n1, '#1e1915');
     S(tg, n2, '#c99520'); S(card, n2, '#b3232c');
