@@ -1,6 +1,6 @@
 (() => {
   const CORK_SRC = 'img/cork.jpg';
-  const BW = 2400, BH = 1600, FR = 40, TW = BW + FR * 2, TH = BH + FR * 2;
+  const BW = 3000, BH = 1900, FR = 40, TW = BW + FR * 2, TH = BH + FR * 2;
   const KEY = 'sin-hunters-board-v1';
   const COLORS = [
     { n: 'Crimson', c: '#b3232c' }, { n: 'Black', c: '#1e1915' }, { n: 'Navy', c: '#27427c' },
@@ -690,7 +690,7 @@
   /* ---------- example case ---------- */
   function loadExample() {
     state = { items: [], strings: [] };
-    const A = (type, x, y, w, text, rot, extra = {}) => addItem(type, Object.assign({ at: { x, y }, exact: true, w, text, rot, quiet: true }, extra));
+    const A = (type, x, y, w, text, rot, extra = {}) => addItem(type, Object.assign({ at: { x: x + 300, y: y + 150 }, exact: true, w, text, rot, quiet: true }, extra));
     const label = A('label', 950, 110, 520, 'The Weeping Saint\nWhitby · October 1889', -1.2, { pin: 1 });
     const n1 = A('note', 1000, 420, 330, "Three bell-ringers gone from St. Mary's. All last seen after evensong. Each left his boots on the 199 steps.", 2.1, { pin: 0 });
     const card = A('card', 1530, 820, 370, 'WITNESS: Mrs. Ada Pryce\nHeard singing from the crypt at two in the morning. Swears it was her late husband.', -2.4, { pin: 1 });
