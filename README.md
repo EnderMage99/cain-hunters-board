@@ -28,14 +28,29 @@ it or hand it to your players.
 
 The page opens on an example case. **Clear board** starts your own.
 
+Behind the board is a Victorian room with two sash windows looking across a
+London street at dusk: people, cabs, an omnibus and a brewer's dray pass by
+gas-lit shopfronts. The street loops without cuts, and holds still if your
+system asks for reduced motion. The windows appear when there is room beside
+the board (roughly 1600px wide screens and up).
+
 ## Files
 
 - `index.html` - the page
 - `css/board.css` - all styling
 - `js/board.js` - the board, the photo ageing and the PNG export
+- `js/street.js` - the animated street outside the windows
 - `img/cork.jpg` - the cork texture
+- `img/room/` - room and street textures
 
 Plain HTML, CSS and JavaScript with no build step. Opened straight from disk
 everything works except Export PNG, which browsers block for `file://`
 pages; use the live site or any local server (`npx serve`, `python -m
 http.server`).
+
+## Credits
+
+- Wallpaper: William Morris, *St James* (1880/81), public domain, via
+  [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Morris_St_James_1880.jpg)
+- Wood, floorboards, brick and cobblestone textures: [Poly Haven](https://polyhaven.com)
+  (CC0): Dark Wood, Wood Floor Worn, Dark Brick Wall, Cobblestone 02

@@ -13,6 +13,13 @@
 <link rel="stylesheet" href="css/board.css">
 </head>
 <body>
+<div id="room" aria-hidden="true">
+  <div class="wall"></div><div class="wall-light"></div>
+  <div class="dado"></div>
+  <div class="floor"></div>
+    <div class="win"><div class="frame"><div class="opening"><canvas></canvas><div class="glass"></div><div class="sash"></div></div></div><div class="sill"></div><div class="curtain l"></div><div class="curtain r"></div><div class="pelmet"></div></div>
+    <div class="win"><div class="frame"><div class="opening"><canvas></canvas><div class="glass"></div><div class="sash"></div></div></div><div class="sill"></div><div class="curtain l"></div><div class="curtain r"></div><div class="pelmet"></div></div>
+</div>
 <header class="bar">
   <div class="bar-in">
     <div class="brand"><b>Sin Hunter's Board</b><small>Case notes &middot; Anno 1889</small></div>
@@ -65,5 +72,6 @@
 <div id="toast" role="status" hidden></div>
 
 <script src="js/board.js"></script>
+<script src="js/street.js"></script>
 </body>
 </html>
