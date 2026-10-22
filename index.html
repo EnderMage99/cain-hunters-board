@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="An 1889 cork evidence board for tracking sins in a CAIN one-shot.">
+<title>Sin Hunter's Board</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='13' r='9' fill='%23b3232c'/%3E%3Cpath d='M16 22 V31' stroke='%23888' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=La+Belle+Aurore&family=Special+Elite&display=swap">
+<link rel="stylesheet" href="css/board.css">
+</head>
+<body>
+<header class="bar">
+  <div class="bar-in">
+    <div class="brand"><b>Sin Hunter's Board</b><small>Case notes &middot; Anno 1889</small></div>
+    <div class="grp" aria-label="Pin up">
+      <span class="grp-label">Pin up</span>
+      <button class="btn" id="addNote" type="button">Note</button>
+      <button class="btn" id="addCard" type="button">Index card</button>
+      <button class="btn" id="addTg" type="button">Telegram</button>
+      <button class="btn" id="addLabel" type="button">Heading</button>
+      <button class="btn" id="addPhoto" type="button">Photograph&hellip;</button>
+    </div>
+    <div class="grp" aria-label="String">
+      <span class="grp-label">String</span>
+      <button class="btn" id="tie" type="button" aria-pressed="false">Tie string</button>
+      <div id="swatches" role="radiogroup" aria-label="String colour" style="display:flex;gap:6px"></div>
+    </div>
+    <div class="grp" aria-label="View">
+      <span class="grp-label">View</span>
+      <button class="btn sq" id="zoomOut" type="button" aria-label="Zoom out">&minus;</button>
+      <button class="btn" id="zoomFit" type="button" title="Fit board to screen">100%</button>
+      <button class="btn sq" id="zoomIn" type="button" aria-label="Zoom in">+</button>
+    </div>
+    <div class="grp" aria-label="Case file">
+      <span class="grp-label">Case file</span>
+      <button class="btn" id="exportPng" type="button">Export PNG</button>
+      <button class="btn" id="saveFile" type="button">Save file</button>
+      <button class="btn" id="openFile" type="button">Open file&hellip;</button>
+      <button class="btn" id="clearBoard" type="button">Clear board</button>
+    </div>
+    <input id="photoInput" type="file" accept="image/*" multiple hidden>
+    <input id="caseInput" type="file" accept=".json,.png,application/json,image/png" hidden>
+  </div>
+</header>
+
+<main id="viewport">
+  <div id="stage">
+    <div id="board">
+      <div class="fr-shadow"></div>
+      <div class="fr t"></div><div class="fr b"></div><div class="fr l"></div><div class="fr r"></div>
+      <div id="cork">
+        <div id="items"></div>
+        <svg id="strings" xmlns="http://www.w3.org/2000/svg" width="2400" height="1600" viewBox="0 0 2400 1600"></svg>
+        <div id="strctl" hidden></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="hint">Double-click a note to write on it. Drag to move. Press Tie string, then click two items to connect them.</div>
+<div id="toast" role="status" hidden></div>
+
+<script src="js/board.js"></script>
+</body>
+</html>
