@@ -11,8 +11,10 @@
   --iz:1;
   color-scheme:dark;
 }
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{height:100%}
-body{background:var(--desk);color:var(--ui);font-family:var(--f-print);display:flex;flex-direction:column;overflow:hidden}
+body{margin:0;background:var(--desk);color:var(--ui);font-family:var(--f-print);display:flex;flex-direction:column;overflow:hidden}
 button{font:inherit}
 
 /* toolbar */

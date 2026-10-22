@@ -677,69 +677,18 @@
   }
 
   /* ---------- example case ---------- */
-  function sceneStreet() {
-    const c = document.createElement('canvas'); c.width = 600; c.height = 430; const x = c.getContext('2d'), R = seeded(12);
-    let g = x.createLinearGradient(0, 0, 0, 430); g.addColorStop(0, '#7b7b7b'); g.addColorStop(.6, '#bdbdbd'); g.addColorStop(1, '#5a5a5a');
-    x.fillStyle = g; x.fillRect(0, 0, 600, 430);
-    x.fillStyle = '#9a9a9a';
-    x.beginPath(); x.moveTo(330, 260); x.lineTo(360, 60); x.lineTo(372, 60); x.lineTo(400, 260); x.fill();
-    x.fillRect(340, 110, 50, 150);
-    for (let i = 0, bx = -10; bx < 620; i++) {
-      const bw = 50 + R() * 70, bh = 120 + R() * 110, by = 300 - bh;
-      x.fillStyle = `rgb(${50 + R() * 25 | 0},${50 + R() * 25 | 0},${50 + R() * 25 | 0})`;
-      x.fillRect(bx, by, bw, bh + 10);
-      x.beginPath(); x.moveTo(bx - 4, by); x.lineTo(bx + bw / 2, by - 30 - R() * 20); x.lineTo(bx + bw + 4, by); x.fill();
-      x.fillRect(bx + bw * .7, by - 48, 9, 30);
-      x.fillStyle = 'rgba(220,210,180,.7)';
-      for (let k = 0; k < 4; k++) if (R() < .45) x.fillRect(bx + 8 + R() * (bw - 20), by + 20 + R() * (bh - 40), 7, 11);
-      bx += bw - 2;
-    }
-    g = x.createLinearGradient(0, 300, 0, 430); g.addColorStop(0, '#3a3a3a'); g.addColorStop(1, '#181818');
-    x.fillStyle = g; x.fillRect(0, 300, 600, 130);
-    x.fillStyle = 'rgba(160,160,160,.25)';
-    for (let i = 0; i < 160; i++) { x.beginPath(); x.ellipse(R() * 600, 310 + R() * 120, 6 + R() * 6, 2 + R() * 2, 0, 0, 7); x.fill(); }
-    x.strokeStyle = '#121212'; x.lineWidth = 6; x.beginPath(); x.moveTo(440, 400); x.lineTo(440, 175); x.stroke();
-    x.fillStyle = '#121212'; x.fillRect(426, 150, 28, 30);
-    stain(x, 440, 165, 70, 'rgba(255,255,240,.85)');
-    x.fillStyle = '#0d0d0d';
-    x.beginPath(); x.moveTo(230, 395); x.lineTo(244, 270); x.lineTo(276, 270); x.lineTo(292, 395); x.fill();
-    x.beginPath(); x.arc(260, 256, 15, 0, 7); x.fill();
-    x.fillRect(248, 214, 24, 32); x.fillRect(240, 240, 40, 5);
-    g = x.createLinearGradient(0, 250, 0, 430); g.addColorStop(0, 'rgba(230,230,230,0)'); g.addColorStop(1, 'rgba(230,230,230,.45)');
-    x.fillStyle = g; x.fillRect(0, 250, 600, 180);
-    return ageImage(c, 600, 430);
-  }
-  function scenePortrait() {
-    const c = document.createElement('canvas'); c.width = 420; c.height = 540; const x = c.getContext('2d');
-    let g = x.createRadialGradient(210, 220, 30, 210, 260, 330); g.addColorStop(0, '#b8b8b8'); g.addColorStop(1, '#4a4a4a');
-    x.fillStyle = g; x.fillRect(0, 0, 420, 540);
-    x.fillStyle = '#262626'; x.beginPath(); x.ellipse(210, 560, 190, 170, 0, 0, 7); x.fill();
-    x.fillStyle = '#e8e8e8'; x.fillRect(188, 392, 44, 22);
-    x.fillStyle = '#d0d0d0'; x.fillRect(196, 330, 28, 70);
-    g = x.createRadialGradient(195, 250, 10, 210, 270, 110); g.addColorStop(0, '#dedede'); g.addColorStop(1, '#8a8a8a');
-    x.fillStyle = g; x.beginPath(); x.ellipse(210, 270, 72, 92, 0, 0, 7); x.fill();
-    x.fillStyle = '#2c2c2c'; x.beginPath(); x.ellipse(210, 210, 76, 44, 0, Math.PI, 0); x.fill();
-    x.fillStyle = 'rgba(30,30,30,.75)'; x.beginPath(); x.ellipse(184, 262, 12, 6, 0, 0, 7); x.fill(); x.beginPath(); x.ellipse(236, 262, 12, 6, 0, 0, 7); x.fill();
-    x.fillStyle = 'rgba(60,60,60,.5)'; x.fillRect(196, 318, 28, 3);
-    x.fillStyle = '#e9e4d8'; x.beginPath(); x.rect(0, 0, 420, 540); x.moveTo(390, 270); x.ellipse(210, 270, 180, 240, 0, 0, 7); x.fill('evenodd');
-    return ageImage(c, 420, 540);
-  }
   function loadExample() {
     state = { items: [], strings: [] };
     const A = (type, x, y, w, text, rot, extra = {}) => addItem(type, Object.assign({ at: { x, y }, exact: true, w, text, rot, quiet: true }, extra));
     const label = A('label', 990, 110, 440, 'The Weeping Saint\nWhitby · October 1889', -1.2, { pin: 1 });
-    const street = sceneStreet(), portrait = scenePortrait();
-    const p1 = A('photo', 520, 330, 330, 'Church Street, night of the 12th', -3.4, { img: street.url, pin: 0 });
-    const n1 = A('note', 1010, 400, 270, "Three bell-ringers gone from St. Mary's. All last seen after evensong. Each left his boots on the 199 steps.", 2.1, { pin: 0 });
-    const p2 = A('photo', 1440, 300, 230, 'Rev. J. Marrow, vicar since May', 3.6, { img: portrait.url, pin: 2 });
-    const card = A('card', 1530, 880, 310, 'WITNESS: Mrs. Ada Pryce\nHeard singing from the crypt at two in the morning. Swears it was her late husband.', -2.4, { pin: 1 });
-    const tg = A('tg', 600, 900, 330, 'Arrived Whitby stop churchwarden lying stop ask him about the fire of 1871 stop — H.', 1.6, { pin: 3 });
-    const n2 = A('note', 1060, 1010, 260, 'Is the sin feeding on grief?\nCheck parish burials since May.', -1.8, { pin: 0 });
+    const n1 = A('note', 1010, 420, 270, "Three bell-ringers gone from St. Mary's. All last seen after evensong. Each left his boots on the 199 steps.", 2.1, { pin: 0 });
+    const card = A('card', 1530, 820, 310, 'WITNESS: Mrs. Ada Pryce\nHeard singing from the crypt at two in the morning. Swears it was her late husband.', -2.4, { pin: 1 });
+    const tg = A('tg', 520, 640, 330, 'Arrived Whitby stop churchwarden lying stop ask him about the fire of 1871 stop — H.', 1.6, { pin: 3 });
+    const n2 = A('note', 1060, 1040, 260, 'Is the sin feeding on grief?\nCheck parish burials since May.', -1.8, { pin: 0 });
     A('note', 110, 1340, 330, 'Example case. Press Clear board to start your own.', -2.5, { pin: 1 });
-    state.items.forEach(i => { if (i.type === 'photo') i.imprint = IMPRINTS[i === p1 ? 0 : 1]; });
     const S = (a, b, c) => state.strings.push({ id: uid(), a: a.id, b: b.id, color: c });
-    S(label, n1, '#b3232c'); S(n1, p1, '#b3232c'); S(n1, p2, '#b3232c'); S(p2, card, '#27427c');
-    S(tg, p1, '#1e1915'); S(tg, n2, '#c99520'); S(card, n2, '#b3232c');
+    S(label, n1, '#b3232c'); S(n1, card, '#27427c'); S(tg, n1, '#1e1915');
+    S(tg, n2, '#c99520'); S(card, n2, '#b3232c');
     renderAll();
   }
 
